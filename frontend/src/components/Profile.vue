@@ -11,37 +11,51 @@
   import ProfileDataPanel from "./ProfileDataPanel.vue"
   import SingleImageModal from "./SingleImageModal.vue"
 
+  import axios from 'axios';
+  import links from '../links';
+
   export default {
     name: "Profile",
-    data: function () {
+    data: function() { 
       return {
-        imageIds: ['1','2','3','4','5','6','7'],
+        isLoaded:false,
+        imageIds: [],
         profileData:{
-          username: 'tadite',
-          fullname: 'Andrey Nazarov',
-          info: 'My super profile'
+          username: '',
+          fullname: '',
+          info: ''
         }
-      }
+      };
     },
     watch: {
       '$route' (to, from) {
-        console.log(this.$route.params.profileId)
-        console.log(this.$route.params.imageId)
-        this.fetchProfileData(this.$route.params.profileId);
+        var newProfileUsername = this.$route.params.profileId
+        if (this.profileData.username!==newProfileUsername)
+          this.fetchProfileData(newProfileUsername);
       }
     },
     created:function(){
-      this.fetchProfileData('');
+      this.fetchProfileData(this.$route.params.profileId);
     },
     methods: {
       fetchProfileData: function(profileName){
         
         console.log('fetch profile '+profileName);
-        //this.$http.get('/post/' + postId).then(response => {
-        //  this.post = response.body;
-        //}, response => {
-        //  console.log(response)
-        //});
+        var currentProfileLink = links.url+'/profile/'+profileName;
+        
+        axios.get(currentProfileLink)
+          .then(response => {  
+            console.log(response.data.profileData.username)
+            this.profileData.username=response.data.profileData.username;
+            this.profileData.fullname=response.data.profileData.fullname;
+            this.profileData.info=response.data.profileData.info || " ";
+            this.imageIds=response.data.imageIds;
+          })
+          .catch(error => {
+            console.log(error.response)
+          });
+
+          console.log(this.profileData)
       },
     },
     components: {
