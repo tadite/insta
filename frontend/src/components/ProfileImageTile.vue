@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isEmpty">
+  <div v-if="imageChunks.length==0">
     There is no photos yet.
   </div>
   <div v-else>
@@ -15,7 +15,6 @@
   </div>
 </template>
 
-
 <script>  
   import ProfileSingleImage from "./ProfileSingleImage.vue"
 
@@ -24,7 +23,7 @@
     props: ['imageIds'],
     computed: {
       isEmpty(){
-        return this.imageChunks.length==0;
+        return this.imageIds.length==0;
       },
       imageChunks: function () {
         var arrays = [], size = 3;

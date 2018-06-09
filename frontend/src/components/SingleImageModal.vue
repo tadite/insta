@@ -26,32 +26,32 @@
   import links from '../links';
   import axios from 'axios';
 
-export default {
-  props:['imageId'],
-  data: function(){
-    return{
-      commentary:'',
-      isActive:'',
-      imageLink:''
-    }
-  },
-  created() {
-    if (this.imageId==undefined)
-      return;
+  export default {
+    props: ['imageId'],
+    data: function () {
+      return {
+        commentary: '',
+        isActive:false,
+        imageLink:'',
+        commentaryLink:''
+      }
+    },
+    watch: {
+      imageId: function (newVal, oldVal) {
+        if (newVal===undefined)
+          this.isActive=false;
+        if (newVal!==oldVal && newVal!==undefined){
+        this.commentaryLink=links.url + '/description/' + newVal;
+        this.imageLink=links.url + '/image/' + newVal;
 
-    var commentaryUrl = links.url+'/description/'+this.imageId;
-
-      axios.get(commentaryUrl)
-      .then(response => {  
-            console.log(response.data);
-            this.commentary=response.data;
-            this.isActive=this.imageId!=undefined;
-            this.imageLink=links.url+'/image/'+this.imageId;
-          })
-          .catch(error => {
-            console.log(error.response)
-          });
-    
+        console.log(this.commentaryLink)
+        axios.get(this.commentaryLink)
+          .then(function (response) {
+            this.commentary = response.data;
+            this.isActive=newVal !== undefined;
+          }.bind(this));}
+      }
+    },
   }
-}
+
 </script>

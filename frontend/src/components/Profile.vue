@@ -29,13 +29,15 @@
     },
     watch: {
       '$route' (to, from) {
-        var newProfileUsername = this.$route.params.profileId
-        if (this.profileData.username!==newProfileUsername)
-          this.fetchProfileData(newProfileUsername);
+       // var newProfileUsername = this.$route.params.profileId
+        //if (newProfileUsername!==undefined && this.profileData.username!==newProfileUsername)
+          this.fetchProfileData(this.$route.params.profileId);
       }
     },
     created:function(){
-      this.fetchProfileData(this.$route.params.profileId);
+      //var newProfileUsername = this.$route.params.profileId
+     // if (newProfileUsername!==undefined && this.profileData.username!==newProfileUsername)
+          this.fetchProfileData(this.$route.params.profileId);
     },
     methods: {
       fetchProfileData: function(profileName){

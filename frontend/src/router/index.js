@@ -15,7 +15,7 @@ export default new Router({
       redirect:'/signin'
     },
     {
-      path: '/profile/:profileId?/:imageId?',
+      path: '/profile/:profileId/:imageId?',
       name: 'Profile',
       component: Profile,
     },
