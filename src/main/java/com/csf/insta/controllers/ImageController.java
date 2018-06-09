@@ -1,5 +1,6 @@
 package com.csf.insta.controllers;
 
+import com.csf.insta.entities.User;
 import com.csf.insta.security.CurrentUser;
 import com.csf.insta.services.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,22 @@ public class ImageController {
        return imageService.getImage(id).getBytes();
     }
 
+    @RequestMapping(value = "/image", //
+            method = RequestMethod.POST)
+    @ResponseBody
+    public Long addImage(@CurrentUser User user, @RequestBody byte[] bytes) {
+
+        return imageService.addImage(bytes,user);
+
+    }
+
+    @RequestMapping(
+            value = "/image/{id}",
+            method = RequestMethod.POST
+    )
+    public @ResponseBody Long addDescription(@PathVariable Long id, @RequestBody String description) throws IOException {
+        return imageService.addDescription(id,description);
+    }
 
 
 }
