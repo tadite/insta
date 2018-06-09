@@ -1,5 +1,6 @@
 package com.csf.insta.controllers;
 
+import com.csf.insta.security.CurrentUser;
 import com.csf.insta.services.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -13,7 +14,7 @@ import java.io.InputStream;
 @RequestMapping("/api")
 public class ImageController {
 
-    private ImageService imageService;
+    private ImageService imageService;  
 
     @Autowired
     public ImageController(ImageService imageService) {

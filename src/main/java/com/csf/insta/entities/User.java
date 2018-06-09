@@ -98,7 +98,6 @@ public class User implements UserDetails {
         this.images = images;
     }
 
-<<<<<<< HEAD
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -122,13 +121,14 @@ public class User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
-=======
+    }
+
     public String getInfo() {
         return info;
     }
 
     public void setInfo(String info) {
         this.info = info;
->>>>>>> backend
+
     }
 }
