@@ -1,7 +1,8 @@
 <template>
 <div>
+  <vue-snotify></vue-snotify>
 <div>
-<div class="columns is-mobile section">
+<div class="columns section">
   <div class="column is-one-third is-offset-one-third">
     <router-view/>    
     </div>
