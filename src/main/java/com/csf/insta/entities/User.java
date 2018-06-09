@@ -19,6 +19,8 @@ public class User {
 
     private String lastName;
 
+    private String info;
+
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 
@@ -82,5 +84,13 @@ public class User {
 
     public void setImages(List<Image> images) {
         this.images = images;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
     }
 }
