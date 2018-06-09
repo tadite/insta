@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Profile from '@/components/Profile'
+import ImageUploadPanel from '@/components/ImageUploadPanel'
+import ProfileEdit from '@/components/ProfileEdit'
 
 Vue.use(Router)
 
@@ -11,12 +13,21 @@ export default new Router({
       redirect:'/profile'
     },
     {
-      path: '/profile/:profileId?/:imageId?/:edit?',
+      path: '/profile/:profileId?/:imageId?',
       name: 'Profile',
       component: Profile,
-      children:[
-        
-      ]
+    },
+    {
+      path: '/imageUpload',
+      name: 'ImageUploadPanel',
+      component: ImageUploadPanel,
+      props: true
+    },
+    {
+      path: '/profileEdit',
+      name: 'ProfileEdit',
+      component: ProfileEdit,
+      props: true
     }
   ]
 })

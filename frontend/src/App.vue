@@ -3,7 +3,7 @@
 <div>
 <div class="columns is-mobile section">
   <div class="column is-one-third is-offset-one-third">
-    <Profile/>    
+    <router-view/>    
     </div>
 </div>    
 </div>    

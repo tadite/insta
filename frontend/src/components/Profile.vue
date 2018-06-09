@@ -25,7 +25,6 @@
     },
     watch: {
       '$route' (to, from) {
-        console.log(this.$route.params.edit)
         console.log(this.$route.params.profileId)
         console.log(this.$route.params.imageId)
         this.fetchProfileData(this.$route.params.profileId);

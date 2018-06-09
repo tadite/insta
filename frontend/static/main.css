@@ -13,9 +13,8 @@ html,body {
   cursor: pointer;
 }
 
-.edit-btn{
+.edit-container{
   font-size:1.5em;
-  transition: box-shadow .3s;  
 }
 
 .edit-btn:hover {

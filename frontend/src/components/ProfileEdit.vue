@@ -1,43 +1,42 @@
 <template>
-<div>
-<ProfileDataPanel :profileData="profileData"/>
-<ProfileImageTile :imageIds="imageIds"/>
-<SingleImageModal :imageId="this.$route.params.imageId"/>
+  <div class="field">
+    <div class="notification has-background-light">
+      <button class="delete" @click="$router.go(-1)"></button>
+
+      <div class="field">
+        <label class="label">Full Name</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Text input">
+        </div>
 </div>
+        <div class="field">
+          <label class="label">Message</label>
+          <div class="control">
+            <textarea class="textarea" placeholder="Textarea"></textarea>
+          </div>
+        </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link">Submit</button>
+        </div>
+        <div class="control">
+          <button class="button is-text">Cancel</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </template>
 
+
 <script>  
-  import ProfileImageTile from "./ProfileImageTile.vue"
-  import ProfileDataPanel from "./ProfileDataPanel.vue"
-  import SingleImageModal from "./SingleImageModal.vue"
 
   export default {
-    name: "Profile",
-    data: function () {
-      return {
-        profileData:{
-          fullname: 'Andrey Nazarov',
-          info: 'My super profile'
-        }
-      }
+    name: "ProfileEdit",
+    created:function(){
     },
-    watch: {
-      '$route' (to, from) {
-        console.log(this.$route.params.profileId)
-        console.log(this.$route.params.imageId)
-        this.fetchProfileData(this.$route.params.profileId);
-      }
-    },
-    methods: {
-      fetchProfileData: function(profileId){
-        
-        console.log('fetch profile '+profileId);
-        //this.$http.get('/post/' + postId).then(response => {
-        //  this.post = response.body;
-        //}, response => {
-        //  console.log(response)
-        //});
-      },
+    components: {
     }
   };
 

@@ -4,7 +4,7 @@
   <div class="tile is-parent is-paddingless">
         <article v-for="imageId in imageChunk" class="tile is-child pd5">
           <figure class="image is-square pb30">
-            <ProfileSingleImage v-if="imageId" :imageId="imageId" :editing="editing"/>
+            <ProfileSingleImage v-if="imageId" :imageId="imageId"/>
           </figure>
         </article>
   </div>
@@ -18,7 +18,7 @@
 
   export default {
     name: "ProfileImageTile",
-    props: ['imageIds','editing'],
+    props: ['imageIds'],
     computed: {
       imageChunks: function () {
         var arrays = [], size = 3;
