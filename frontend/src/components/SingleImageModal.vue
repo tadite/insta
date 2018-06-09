@@ -1,5 +1,5 @@
 <template>
-  <div class="modal" v-bind:class="{ 'is-active': isActive }">
+  <div v-if="isActive" class="modal" v-bind:class="{ 'is-active': isActive }">
     <div class="modal-background" @click="$router.go(-1)"></div>
     <div class="modal-content">
 
@@ -11,7 +11,7 @@
         </div>
         <div class="card-content">
           <div class="content">
-            {{comment}}
+            {{commentary}}
           </div>
         </div>
       </div>
@@ -22,25 +22,35 @@
 
 </template>
 
-
 <script>
+  import links from '../links';
+  import axios from 'axios';
+
 export default {
   props:['imageId'],
-  computed:{
-      isActive: function(){
-          return this.imageId!=undefined;
-      },
-      imageLink:function(){
-        return 'https://picsum.photos/300/300?random='+this.imageId;
-      }
-  },
-  data:function(){
-    return {
-      comment: '123'
+  data: function(){
+    return{
+      commentary:'',
+      isActive:'',
+      imageLink:''
     }
   },
   created() {
-    // use $route.params.id to get the item for that ID from whereever you have stored all the items.
+    if (this.imageId==undefined)
+      return;
+
+    var commentaryUrl = links.url+'/description/'+this.imageId;
+
+      axios.get(commentaryUrl)
+      .then(response => {  
+            console.log(response.data);
+            this.commentary=response.data;
+            this.isActive=this.imageId!=undefined;
+            this.imageLink=links.url+'/image/'+this.imageId;
+          })
+          .catch(error => {
+            console.log(error.response)
+          });
     
   }
 }

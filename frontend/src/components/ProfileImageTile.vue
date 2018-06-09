@@ -1,5 +1,5 @@
 <template>
-  <div v-if="imageIds.length==0">
+  <div v-if="isEmpty">
     There is no photos yet.
   </div>
   <div v-else>
@@ -23,6 +23,9 @@
     name: "ProfileImageTile",
     props: ['imageIds'],
     computed: {
+      isEmpty(){
+        return this.imageChunks.length==0;
+      },
       imageChunks: function () {
         var arrays = [], size = 3;
         while (this.imageIds.length%3!=0)
@@ -31,7 +34,7 @@
         while (this.imageIds.length > 0)
           arrays.push(this.imageIds.splice(0, size));
 
-        console.log(arrays);
+        console.log(this.imageIds.length);
         return arrays;
       }
     },

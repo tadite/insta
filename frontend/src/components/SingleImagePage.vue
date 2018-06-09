@@ -6,6 +6,8 @@
 </template>
 
 <script>  
+  import links from '../links';
+
   export default {
     name: "SingleImagePage",
     props:['imageId'],
@@ -15,7 +17,7 @@
     },
     computed:{
       imageLink:function(){
-        return 'https://picsum.photos/300/300?random='+this.imageId;
+        return links.url+'/image/'+this.imageId;
       }
     },
     data: function () {
