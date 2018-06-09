@@ -13,8 +13,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class ImageService {
 
-
-
     private UserDao userDao;
 
     private ImageDao imageDao;
@@ -26,9 +24,6 @@ public class ImageService {
         this.userDao = userDao;
         this.imageDao = imageDao;
     }
-
-
-
 
     public ImageDto getImage(Long id) {
 

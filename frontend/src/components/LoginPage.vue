@@ -57,7 +57,7 @@
             this.$router.push('/profile/'+this.username);
           })
           .catch(error => {
-            console.log(error.response)
+            this.$snotify.simple(error.response.data.message);
           });
       }
     }
