@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Profile from '@/components/Profile'
 import ImageUploadPanel from '@/components/ImageUploadPanel'
 import ProfileEdit from '@/components/ProfileEdit'
+import LoginPage from '@/components/LoginPage'
+import RegistrationPage from '@/components/RegistrationPage'
 
 Vue.use(Router)
 
@@ -10,7 +12,7 @@ export default new Router({
   routes: [
     {
       path:'/',
-      redirect:'/profile'
+      redirect:'/signin'
     },
     {
       path: '/profile/:profileId?/:imageId?',
@@ -27,6 +29,18 @@ export default new Router({
       path: '/profileEdit',
       name: 'ProfileEdit',
       component: ProfileEdit,
+      props: true
+    },
+    {
+      path: '/signin',
+      name: 'LoginPage',
+      component: LoginPage,
+      props: true
+    },
+    {
+      path: '/signup',
+      name: 'RegistrationPage',
+      component: RegistrationPage,
       props: true
     }
   ]

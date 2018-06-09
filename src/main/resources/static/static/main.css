@@ -1,0 +1,43 @@
+html,body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  background-color: #F0F2F8;
+  height: 100%;
+}
+
+.insta-img {
+  transition: box-shadow .3s;  
+}
+.insta-img:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.edit-container{
+  font-size:1.5em;
+}
+
+.edit-btn:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.insta-img-cross {
+   position: absolute;
+}
+
+.pb10 {
+	padding-bottom: 10px!important
+}
+
+.pd5 {
+	padding: 5px!important
+}
+
+.pb20 {
+	padding-bottom: 20px!important
+}
+
+.pb30 {
+	padding-bottom: 30px!important
+}
