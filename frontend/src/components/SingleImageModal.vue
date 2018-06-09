@@ -6,7 +6,7 @@
       <div class="card large">
         <div class="card-image">
           <figure class="image">
-            <img :src="imageLink" alt="Image">
+            <img :src="imageData" alt="Image">
           </figure>
         </div>
         <div class="card-content">
@@ -32,7 +32,7 @@
       return {
         commentary: '',
         isActive:false,
-        imageLink:'',
+        imageData:'',
         commentaryLink:''
       }
     },
@@ -46,10 +46,17 @@
 
         console.log(this.commentaryLink)
         axios.get(this.commentaryLink)
-          .then(function (response) {
-            this.commentary = response.data;
+          .then(response => {
+            this.commentary = decodeURIComponent(response.data);
             this.isActive=newVal !== undefined;
-          }.bind(this));}
+          });
+
+        axios.get(this.imageLink)
+          .then(response => {
+            this.imageData=decodeURIComponent(response.data);
+          });
+
+          }
       }
     },
   }

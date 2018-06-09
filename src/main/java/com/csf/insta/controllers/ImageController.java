@@ -28,8 +28,8 @@ public class ImageController {
     }
 
     @GetMapping(
-            value = "/image/{id}"
-           // ,produces = MediaType.APPLICATION_OCTET_STREAM_VALUE
+            value = "/image/{id}",
+            produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE
     )
     public @ResponseBody byte[] getImage(@PathVariable Long id) throws IOException {
        return imageService.getImage(id).getBytes();

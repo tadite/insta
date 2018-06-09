@@ -60,15 +60,12 @@
     created: function () {},
     methods: {
       uploadImage(){
-
-        var uploadImageUrl = links.url+'/image'
+        var uploadImageUrl = links.url+'/image';
 
         axios.post(uploadImageUrl, this.image, {
             headers: { Authorization: this.$store.state.jwt }
           })
           .then(response => {
-            console.log('image');
-            console.log(response);
             var id = response.data;
             this.updateCommentary(id);
           })
@@ -106,7 +103,9 @@
         reader.onload = (e) => {
           vm.image = e.target.result;
         };
-        reader.readAsDataURL(file);
+
+        var test = reader.readAsDataURL(file);
+        console.log(test);
       },
       removeImage: function (e) {
         this.image = '';
