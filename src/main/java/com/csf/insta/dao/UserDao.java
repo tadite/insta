@@ -7,5 +7,5 @@ public interface UserDao extends CrudRepository<User, Long> {
 
     public User findByUsername(String username);
 
-
+    boolean existsByUsername(String username);
 }
