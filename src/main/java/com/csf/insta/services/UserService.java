@@ -32,4 +32,13 @@ public class UserService {
         User user = userDao.findByUsername(username);
        return userMapper.userToProfileDto(user);
     }
+
+    public void updateProile(User user,String fullname,String info){
+        User currentUser = userDao.findByUsername(user.getUsername());
+        String [] splitedName = fullname.split(" ");
+        currentUser.setFirstName(splitedName[0]);
+        currentUser.setLastName(splitedName[1]);
+        currentUser.setInfo(info);
+        userDao.save(currentUser);
+    }
 }
