@@ -21,8 +21,8 @@
 
         axios.get(links.url+'/image/'+this.imageId)
           .then(response => {  
-            console.log(decodeURIComponent(response.data))
-            this.imgData=decodeURIComponent(response.data);
+            console.log(response.data);
+            this.imgData=response.data;
           })
           .catch(error => {
             console.log(error.response)

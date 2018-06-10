@@ -6,7 +6,7 @@
 <div class="field">
       <div class="file">
         <label class="file-label">
-          <input class="file-input" type="file" name="resume" @change="onFileChange">
+          <input class="file-input" type="file" name="file" enctype="multipart/form-data" @change="onFileChange">
           <span class="file-cta">
             <span class="file-icon">
               <i class="fas fa-upload"></i>
@@ -61,9 +61,10 @@
     methods: {
       uploadImage(){
         var uploadImageUrl = links.url+'/image';
-
+        console.log(this.image);
         axios.post(uploadImageUrl, this.image, {
-            headers: { Authorization: this.$store.state.jwt }
+            headers: { Authorization: this.$store.state.jwt, 
+            'Content-Type': 'text/plain; charset=utf-8' }
           })
           .then(response => {
             var id = response.data;
@@ -77,7 +78,8 @@
         var uploadImageUrl = links.url+'/image/'+imgId;
         console.log(this.commentary);
         axios.post(uploadImageUrl, this.commentary, {
-            headers: { Authorization: this.$store.state.jwt }
+            headers: { Authorization: this.$store.state.jwt, 
+            'Content-Type': 'text/plain; charset=utf-8' }
           }
         )
           .then(response => {
@@ -104,8 +106,7 @@
           vm.image = e.target.result;
         };
 
-        var test = reader.readAsDataURL(file);
-        console.log(test);
+        reader.readAsDataURL(file);
       },
       removeImage: function (e) {
         this.image = '';

@@ -47,13 +47,13 @@
         console.log(this.commentaryLink)
         axios.get(this.commentaryLink)
           .then(response => {
-            this.commentary = decodeURIComponent(response.data);
+            this.commentary = response.data;
             this.isActive=newVal !== undefined;
           });
 
         axios.get(this.imageLink)
           .then(response => {
-            this.imageData=decodeURIComponent(response.data);
+            this.imageData=response.data;
           });
 
           }
